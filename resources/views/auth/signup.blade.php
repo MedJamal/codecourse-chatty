@@ -9,7 +9,7 @@
 
 				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 					<label for="email" class="control-label">Your email address</label>
-					<input type="text" name="email" id="email" class="form-control" value="{{ Request::old('email') }}">
+					<input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}">
 					@if($errors->has('email'))
 						<span class="help-block">{{ $errors->first('email') }}</span>
 					@endif
@@ -17,7 +17,7 @@
 
 				<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
 					<label for="username" class="control-label">Choose a username</label>
-					<input type="text" name="username" id="username" class="form-control" value="{{ Request::old('username') }}">
+					<input type="text" name="username" id="username" class="form-control" value="{{ old('username') }}">
 					@if($errors->has('username'))
 						<span class="help-block">{{ $errors->first('username') }}</span>
 					@endif

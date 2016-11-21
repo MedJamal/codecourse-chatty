@@ -16,12 +16,18 @@ class UsersTableSeeder extends Seeder
 			'email'		=> 'ransan32@yahoo.com',
 			'username'	=> 'ransan32',
 			'password'	=> bcrypt('password'),
+			'firstname'	=> 'Ranie',
+			'lastname'	=> 'Santos',
+			'location'	=> 'Manila, PH',
 		]);
 		
 		User::create([
 			'email'		=> 'alex@codecourse.com',
 			'username'	=> 'alex',
 			'password'	=> bcrypt('password'),
+			'firstname'	=> 'Alex',
+			'lastname'	=> 'Garrett',
+			'location'	=> 'London, UK',
 		]);
 		
         User::create([

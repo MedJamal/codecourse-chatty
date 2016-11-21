@@ -9,7 +9,7 @@
 
 				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 					<label for="email" class="control-label">Email</label>
-					<input type="text" name="email" id="email" class="form-control" value="{{ Request::old('email') }}">
+					<input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}">
 					@if($errors->has('email'))
 						<span class="help-block">{{ $errors->first('email') }}</span>
 					@endif
