@@ -43,8 +43,7 @@ class AuthController extends Controller{
 		if(!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))){
 			return redirect()
 				->back()
-				// ->withAlert('Could not sign you in with those details.');
-				->withAlert(bcrypt('password'));
+				->withAlert('Could not sign you in with those details.');
 		}
 
 		return redirect()

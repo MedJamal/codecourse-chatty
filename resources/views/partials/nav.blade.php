@@ -9,9 +9,9 @@
 					<li><a href="{{ route('home') }}">Timeline</a></li>
 					<li><a href="{{ route('home') }}">Friends</a></li>
 				</ul>
-				<form action="{{ route('home') }}" class="navbar-form navbar-left" role="search">
+				<form action="{{ route('search.results') }}" class="navbar-form navbar-left" role="search">
 					<div class="form-group">
-						<input type="text" class="form-control" name="query" placeholder="Find people">
+						<input type="text" class="form-control" name="keyword" placeholder="Find people">
 					</div>
 					<button type="submit" class="btn btn-default">Search</button>
 				</form>
