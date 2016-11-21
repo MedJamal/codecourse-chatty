@@ -1,6 +1,19 @@
 <?php
 
+// Home
+
 Route::get('/', [
-	'uses' => '\Chatty\Http\Controllers\HomeController@index',
-	'as' => 'home'
+	'uses' => 'HomeController@index',
+	'as' => 'home',
+]);
+
+// Authentication
+
+Route::get('/signup', [
+	'uses' => 'AuthController@getSignup',
+	'as' => 'auth.signup',
+]);
+
+Route::post('/signup', [
+	'uses' => 'AuthController@postSignup',
 ]);
