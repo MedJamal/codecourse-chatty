@@ -40,3 +40,10 @@ Route::get('/search', [
 	'uses' => 'SearchController@getResults',
 	'as' => 'search.results',
 ]);
+
+// User Profile
+
+Route::get('/user/{username}', [
+	'uses' => 'ProfileController@getProfile',
+	'as' => 'profile.index',
+]);
