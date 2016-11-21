@@ -9,6 +9,7 @@
 <body>
 	@include('partials.nav')
 	<div class="container">
+		@include('partials.alert')
 		@yield('content')
 	</div>
 </body>
