@@ -17,3 +17,12 @@ Route::get('/signup', [
 Route::post('/signup', [
 	'uses' => 'AuthController@postSignup',
 ]);
+
+Route::get('/signin', [
+	'uses' => 'AuthController@getSignin',
+	'as' => 'auth.signin',
+]);
+
+Route::post('/signin', [
+	'uses' => 'AuthController@postSignin',
+]);

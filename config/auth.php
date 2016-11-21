@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Chatty\User::class,
+            'model' => Chatty\Models\User::class,
         ],
 
         // 'users' => [
