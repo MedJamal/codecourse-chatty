@@ -52,4 +52,11 @@ class AuthController extends Controller{
 				->withAlert('You are now signed in.');
 	}
 	
+	public function getSignout(){
+		Auth::logout();
+
+		return redirect()
+				->route('home')
+				->withAlert('You have been signed out.');
+	}
 }
