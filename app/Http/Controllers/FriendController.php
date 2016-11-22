@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 class FriendController extends Controller
 {
     public function index(){
-		$friends = Auth::user()->friends();
+		$friends	= Auth::user()->friends();
+		$requests	= Auth::user()->friendRequests();
 		
 		return view('friends.index')
-			->withFriends($friends);
+			->withFriends($friends)
+			->withRequests($requests);
 	}
 }

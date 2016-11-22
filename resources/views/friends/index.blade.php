@@ -16,6 +16,11 @@
 		<div class="col-lg-6">
 			<h4>Friend requests</h4>
 			
+			@forelse($requests as $user)
+				@include('partials.userblock')
+			@empty
+				<p>You have no friend requests.</p>
+			@endforelse
 		</div>
 	</div>
 @stop
