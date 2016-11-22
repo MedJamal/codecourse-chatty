@@ -12,7 +12,7 @@ class ProfileController extends Controller
 		$user = User::where('username', $username)->firstOrFail();
 
 		return view('profile.index')
-			->withUser($user);
+			->with('user', $user);
 	}
 
 	public function getEdit(){
@@ -34,6 +34,6 @@ class ProfileController extends Controller
 
 		return redirect()
 			->route('profile.edit')
-			->withAlert('Your profile has been updated.');
+			->with('alert', 'Your profile has been updated.');
 	}
 }

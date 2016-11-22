@@ -20,7 +20,7 @@ class SearchController extends Controller
 			->get();
 
 		return view('search.results')
-			->withUsers($users)
-			->withKeyword($keyword);
+			->with('users', $users)
+			->with('keyword', $keyword);
 	}
 }

@@ -27,7 +27,7 @@ class AuthController extends Controller{
 
 		return redirect()
 			->route('home')
-			->withAlert('Your account has been created and you can now sign in.');		
+			->with('alert', 'Your account has been created and you can now sign in.');		
 	}
 
 	public function getSignin(){
@@ -43,12 +43,12 @@ class AuthController extends Controller{
 		if(!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))){
 			return redirect()
 				->back()
-				->withAlert('Could not sign you in with those details.');
+				->with('alert', 'Could not sign you in with those details.');
 		}
 
 		return redirect()
 			->route('home')
-			->withAlert('You are now signed in.');
+			->with('alert', 'You are now signed in.');
 	}
 	
 	public function getSignout(){
@@ -56,6 +56,6 @@ class AuthController extends Controller{
 
 		return redirect()
 			->route('home')
-			->withAlert('You have been signed out.');
+			->with('alert', 'You have been signed out.');
 	}
 }

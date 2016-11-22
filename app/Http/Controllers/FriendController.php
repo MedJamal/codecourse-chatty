@@ -13,8 +13,8 @@ class FriendController extends Controller
 		$requests	= Auth::user()->friendRequests();
 		
 		return view('friends.index')
-			->withFriends($friends)
-			->withRequests($requests);
+			->with('friends', $friends)
+			->with('requests', $requests);
 	}
 
 	public function getAdd($username){
@@ -23,19 +23,19 @@ class FriendController extends Controller
 		if(Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())){
 			return redirect()
 				->route('profile.index', ['username' => $username])
-				->withAlert('Friend request already pending.');
+				->with('alert', 'Friend request already pending.');
 		}
 
 		if(Auth::user()->isFriendsWith($user)){
 			return redirect()
 				->route('profile.index', ['username' => $username])
-				->withAlert('You are already friends.');
+				->with('alert', 'You are already friends.');
 		}
 
 		Auth::user()->addFriend($user);
 
 		return redirect()
 			->route('profile.index', ['username' => $username])
-			->withAlert('Friend request sent.');
+			->with('alert', 'Friend request sent.');
 	}
 }
