@@ -1,7 +1,9 @@
 @extends('layouts.base')
 
+@section('title', "Search '{$keyword}' | ")
+
 @section('content')
-	<h3>Your search for "{{ Request::input('keyword') }}"</h3>
+	<h3>Your search for "{{ $keyword }}"</h3>
 
 	<div class="row">
 		<div class="col-lg-12">

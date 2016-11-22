@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', "Sign in | ")
+
 @section('content')
 	<h3>Sign in</h3>
 

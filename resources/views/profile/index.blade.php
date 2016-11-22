@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', "{$user->getNameOrUsername()} | ")
+
 @section('content')
 	<div class="row">
 		<div class="col-lg-5">

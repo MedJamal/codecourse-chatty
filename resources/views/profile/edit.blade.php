@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', "Update your profile | ")
+
 @section('content')
 	<h3>Update your profile</h3>
 
