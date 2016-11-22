@@ -21,8 +21,8 @@ class ProfileController extends Controller
 
 	public function postEdit(Request $request){
 		$this->validate($request, [
-			'firstname'	=> 'alpha|max:40',
-			'lastname' 	=> 'alpha|max:40',
+			'firstname'	=> 'alpha_spaces|max:40',
+			'lastname' 	=> 'alpha_spaces|max:40',
 			'location' 	=> 'max:20',
 		]);
 
