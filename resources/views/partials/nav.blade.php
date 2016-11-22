@@ -1,13 +1,13 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="{{ route('home') }}" class="navbar-brand">Chatty</a>
+			<a href="{{ route('home') }}" class="navbar-brand">{{ config('app.name') }}</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			@if(Auth::check())
 				<ul class="nav navbar-nav">
 					<li><a href="{{ route('home') }}">Timeline</a></li>
-					<li><a href="{{ route('home') }}">Friends</a></li>
+					<li><a href="{{ route('friends.index') }}">Friends</a></li>
 				</ul>
 				<form action="{{ route('search.results') }}" class="navbar-form navbar-left" role="search">
 					<div class="form-group">
