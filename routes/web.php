@@ -2,69 +2,40 @@
 
 // Home
 
-Route::get('/', [
-	'uses' => 'HomeController@index',
-	'as' => 'home',
-]);
+Route::get('/', 'HomeController@index')->name('home');
 
 // Authentication
 
 Route::group(['middleware' => 'guest'], function () {
-	Route::get('/signup', [
-		'uses' => 'AuthController@getSignup',
-		'as' => 'auth.signup',
-	]);
 
-	Route::post('/signup', [
-		'uses' => 'AuthController@postSignup',
-	]);
+	Route::get('/signup', 'AuthController@getSignup')->name('auth.signup');
 
-	Route::get('/signin', [
-		'uses' => 'AuthController@getSignin',
-		'as' => 'auth.signin',
-	]);
+	Route::post('/signup', 'AuthController@postSignup');
 
-	Route::post('/signin', [
-		'uses' => 'AuthController@postSignin',
-	]);
+	Route::get('/signin', 'AuthController@getSignin')->name('auth.signin');
+
+	Route::post('/signin', 'AuthController@postSignin');
+
 });
 
-Route::get('/signout', [
-	'uses' => 'AuthController@getSignout',
-	'as' => 'auth.signout',
-]);
+Route::get('/signout', 'AuthController@getSignout')->name('auth.signout');
 
 // Search
 
-Route::get('/search', [
-	'uses' => 'SearchController@getResults',
-	'as' => 'search.results',
-]);
+Route::get('/search', 'SearchController@getResults')->name('search.results');
 
 // User Profile
 
-Route::get('/user/{username}', [
-	'uses' => 'ProfileController@getProfile',
-	'as' => 'profile.index',
-]);
+Route::get('/user/{username}', 'ProfileController@getProfile')->name('profile.index');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/profile/edit', [
-		'uses' => 'ProfileController@getEdit',
-		'as' => 'profile.edit',
-	]);
 
-	Route::post('/profile/edit', [
-		'uses' => 'ProfileController@postEdit',
-	]);
+	Route::get('/profile/edit', 'ProfileController@getEdit')->name('profile.edit');
 
-	Route::get('/friends', [
-		'uses' => 'FriendController@index',
-		'as' => 'friends.index',
-	]);
+	Route::post('/profile/edit', 'ProfileController@postEdit');
 
-	Route::get('/friends/add/{username}', [
-		'uses' => 'FriendController@getAdd',
-		'as' => 'friends.add',
-	]);
+	Route::get('/friends', 'FriendController@index')->name('friends.index');
+
+	Route::get('/friends/add/{username}', 'FriendController@getAdd')->name('friends.add');
+
 });
