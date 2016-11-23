@@ -20,6 +20,10 @@ class FriendController extends Controller
 	public function getAdd($username){
 		$user = User::where('username', $username)->firstOrFail();
 
+		if(Auth::id() === $user->id){
+			return redirect()->route('home');
+		}
+
 		if(Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())){
 			return redirect()
 				->route('profile.index', ['username' => $username])
@@ -37,5 +41,19 @@ class FriendController extends Controller
 		return redirect()
 			->route('profile.index', ['username' => $username])
 			->with('alert', 'Friend request sent.');
+	}
+
+	public function getAccept($username){
+		$user = User::where('username', $username)->firstOrFail();
+
+		if(!Auth::user()->hasFriendRequestReceived($user)){
+			return redirect()->route('home');
+		}
+
+		Auth::user()->acceptFriendRequest($user);
+
+		return redirect()
+			->route('profile.index', ['username' => $username])
+			->with('alert', 'Friend request accepted.');
 	}
 }
