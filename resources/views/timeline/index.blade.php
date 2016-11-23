@@ -38,9 +38,9 @@
 							@endif
 							{{-- <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li> --}}
 						</ul>
-						{{--
+
 						@include('partials.statusreplies')
-						--}}
+
 						<form action="{{ route('status.reply', ['statusId' => $status->id]) }}" method="post">
 							<div class="form-group {{ $errors->has("reply-{$status->id}") ? 'has-error' : '' }}">
 								<textarea name="reply-{{ $status->id }}" rows="2" class="form-control" placeholder="Reply to this status"></textarea>
