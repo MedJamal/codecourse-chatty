@@ -45,6 +45,11 @@ class StatusController extends Controller
 				->with('alert', "Add {$status->user->getFirstNameOrUsername()} as a friend to reply to their statuses.");
 		}
 
-		// insert record
+		$status->replies()->create([
+			'body' => $request->{"reply-$statusId"},
+			'user_id' => Auth::id(),
+		]);
+
+		return redirect()->back();
 	}
 }
