@@ -9,7 +9,7 @@ class HomeController extends Controller{
 
 	public function index(){
 		if(Auth::check()){
-			$statuses = Status::where(function($query){
+			$statuses = Status::notReply()->where(function($query){
 				return $query->where('user_id', Auth::id())
 					->orWhereIn('user_id', Auth::user()->friends()->pluck('id'));
 			})
