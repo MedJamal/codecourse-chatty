@@ -19,7 +19,7 @@ class SearchController extends Controller
 			->orWhere('username', 'LIKE', "%{$keyword}%")
 			->get();
 
-		return view('search.results')
+		return view('results')
 			->with('users', $users)
 			->with('keyword', $keyword);
 	}
