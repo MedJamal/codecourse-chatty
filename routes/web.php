@@ -40,4 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/friends/accept/{username}', 'FriendController@getAccept')->name('friends.accept');
 
+	Route::post('/status', 'StatusController@postStatus')->name('status.post');
+
 });
