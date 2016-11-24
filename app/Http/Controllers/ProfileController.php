@@ -15,8 +15,7 @@ class ProfileController extends Controller
 
 		return view('profile.index')
 			->with('user', $user)
-			->with('statuses', $statuses)
-			->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
+			->with('statuses', $statuses);
 	}
 
 	public function getEdit(){
