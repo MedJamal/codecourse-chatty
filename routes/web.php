@@ -34,11 +34,17 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/profile/edit', 'ProfileController@postEdit');
 
+	// Friends
+
 	Route::get('/friends', 'FriendController@index')->name('friends.index');
 
 	Route::get('/friends/add/{username}', 'FriendController@getAdd')->name('friends.add');
 
 	Route::get('/friends/accept/{username}', 'FriendController@getAccept')->name('friends.accept');
+
+	Route::post('/friends/delete/{username}', 'FriendController@postDelete')->name('friends.delete');
+
+	// Statuses
 
 	Route::post('/status', 'StatusController@postStatus')->name('status.post');
 

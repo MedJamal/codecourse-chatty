@@ -54,6 +54,20 @@ class FriendController extends Controller
 
 		return redirect()
 			->route('profile.index', ['username' => $username])
-			->with('alert', 'Friend request accepted.');
+			->with('alert', "{$user->getFirstNameOrUsername()} is now your friend.");
+	}
+
+	public function postDelete($username){
+		$user = User::where('username', $username)->firstOrFail();
+
+		if(!Auth::user()->isFriendsWith($user)){
+			return redirect()->back();
+		}
+
+		Auth::user()->deleteFriend($user);
+
+		return redirect()
+			->back()
+			->with('alert', "You have unfriended {$user->getFirstNameOrUsername()}.");
 	}
 }
