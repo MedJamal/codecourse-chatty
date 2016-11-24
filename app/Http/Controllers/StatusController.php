@@ -33,10 +33,10 @@ class StatusController extends Controller
 		$status = Status::notReply()->findOrFail($statusId);
 
 		/*
-		if you are NOT friends with the owner of the status
-		AND you don't own the status
+			if you are NOT friends with the owner of the status
+			AND you don't own the status
 
-		without the 2nd condition you can't reply to your own statuses
+			without the 2nd condition you can't reply to your own statuses
 		*/
 
 		if(!Auth::user()->isFriendsWith($status->user) && Auth::id() !== $status->user->id){
@@ -47,6 +47,26 @@ class StatusController extends Controller
 
 		$status->replies()->create([
 			'body' => $request->{"reply-$statusId"},
+			'user_id' => Auth::id(),
+		]);
+
+		return redirect()->back();
+	}
+
+	public function getLike($statusId){
+		$status = Status::findOrFail($statusId);
+
+		if(!Auth::user()->isFriendsWith($status->user)){
+			return redirect()
+				->route('home')
+				->with('alert', "Add {$status->user->getFirstNameOrUsername()} as a friend to like their statuses.");
+		}
+
+		if(Auth::user()->hasLikedStatus($status)){
+			return redirect()->back();
+		}
+
+		$status->likes()->create([
 			'user_id' => Auth::id(),
 		]);
 
