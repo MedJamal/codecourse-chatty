@@ -21,6 +21,10 @@ class Status extends Model
 		return $this->hasMany('Chatty\Models\Status', 'parent_id');
 	}
 
+	public function likes(){
+		return $this->morphMany('Chatty\Models\Like', 'likeable');
+	}
+
 	public function scopeNotReply($query){
 		return $query->whereNull('parent_id');
 	}
