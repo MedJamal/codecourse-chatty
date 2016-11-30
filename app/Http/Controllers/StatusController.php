@@ -50,7 +50,7 @@ class StatusController extends Controller
 			'user_id' => Auth::id(),
 		]);
 
-		return redirect()->back();
+		return back();
 	}
 
 	public function getLike($statusId){
@@ -63,13 +63,13 @@ class StatusController extends Controller
 		}
 
 		if(Auth::user()->hasLikedStatus($status)){
-			return redirect()->back();
+			return back();
 		}
 
 		$status->likes()->create([
 			'user_id' => Auth::id(),
 		]);
 
-		return redirect()->back();
+		return back();
 	}
 }
