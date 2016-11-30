@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function getResults(Request $request){
-		$keyword = $request->keyword;
+    public function getResults(){
+		$keyword = request('keyword');
 		
 		if(!$keyword){
 			return redirect()->route('home');

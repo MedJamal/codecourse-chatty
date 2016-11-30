@@ -22,17 +22,17 @@ class ProfileController extends Controller
 		return view('profile.edit');
 	}
 
-	public function postEdit(Request $request){
-		$this->validate($request, [
+	public function postEdit(){
+		$this->validate(request(), [
 			'firstname'	=> 'alpha_spaces|max:40',
 			'lastname' 	=> 'alpha_spaces|max:40',
 			'location' 	=> 'max:20',
 		]);
 
 		Auth::user()->update([
-			'firstname'	=> $request->firstname,
-			'lastname' 	=> $request->lastname,
-			'location' 	=> $request->location,
+			'firstname'	=> request('firstname'),
+			'lastname' 	=> request('lastname'),
+			'location' 	=> request('location'),
 		]);
 
 		return redirect()

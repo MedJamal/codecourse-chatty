@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
-    public function postStatus(Request $request){
-		$this->validate($request, [
+    public function postStatus(){
+		$this->validate(request(), [
 			'status' => 'required|max:1000',
 		]);
 
 		Auth::user()->statuses()->create([
-			'body' => $request->status,
+			'body' => request(status),
 		]);
 
 		return redirect()
@@ -22,8 +22,8 @@ class StatusController extends Controller
 			->with('alert', 'Status posted.');
 	}
 
-	public function postReply(Request $request, $statusId){
-		$this->validate($request, [
+	public function postReply($statusId){
+		$this->validate(request(), [
 			"reply-{$statusId}" => 'required|max:1000',
 		], [
 			'required'	=> 'The reply body is required.',
@@ -46,7 +46,7 @@ class StatusController extends Controller
 		}
 
 		$status->replies()->create([
-			'body' => $request->{"reply-$statusId"},
+			'body' => request("reply-{$statusId}"),
 			'user_id' => Auth::id(),
 		]);
 

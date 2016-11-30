@@ -12,17 +12,17 @@ class AuthController extends Controller{
 		return view('auth.signup');
 	}
 
-	public function postSignup(Request $request){
-		$this->validate($request, [
+	public function postSignup(){
+		$this->validate(request(), [
 			'email' 	=> 'required|unique:users|max:70|email',
 			'username' 	=> 'required|unique:users|max:40|alpha_dash',
 			'password' 	=> 'required|min:8|confirmed',
 		]);
 
 		User::create([
-			'email'		=> $request->email,
-			'username'	=> $request->username,
-			'password'	=> bcrypt($request->password),
+			'email'		=> request('email'),
+			'username'	=> request('username'),
+			'password'	=> bcrypt(request('password')),
 		]);
 
 		return redirect()
@@ -34,13 +34,13 @@ class AuthController extends Controller{
 		return view('auth.signin');
 	}
 
-	public function postSignin(Request $request){
-		$this->validate($request, [
+	public function postSignin(){
+		$this->validate(request(), [
 			'email' 	=> 'required',
 			'password' 	=> 'required',
 		]);
 
-		if(!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))){
+		if(!Auth::attempt(request()->only(['email', 'password']), request()->has('remember'))){
 			return redirect()
 				->back()
 				->with('alert', 'Could not sign you in with those details.');
