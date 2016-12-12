@@ -13,9 +13,7 @@ class ProfileController extends Controller
 
 		$statuses = $user->statuses()->notReply()->get();
 
-		return view('profile.index')
-			->with('user', $user)
-			->with('statuses', $statuses);
+		return view('profile.index')->with(compact('user', 'statuses'));
 	}
 
 	public function getEdit(){

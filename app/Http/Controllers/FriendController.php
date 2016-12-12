@@ -12,9 +12,7 @@ class FriendController extends Controller
 		$friends	= Auth::user()->friends();
 		$requests	= Auth::user()->friendRequests();
 		
-		return view('friends')
-			->with('friends', $friends)
-			->with('requests', $requests);
+		return view('friends')->with(compact('friends', 'requests'));
 	}
 
 	public function getAdd($username){

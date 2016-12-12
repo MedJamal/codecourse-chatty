@@ -16,8 +16,7 @@ class HomeController extends Controller{
 			->orderBy('created_at', 'DESC')
 			->paginate(10);
 			
-			return view('timeline')
-				->with('statuses', $statuses);
+			return view('timeline')->with(compact('statuses'));
 		}
 
 		return view('home');
