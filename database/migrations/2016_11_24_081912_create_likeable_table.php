@@ -6,13 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateLikeableTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+	public function up()
+	{
 		Schema::create('likeable', function(Blueprint $table){
 			$table->increments('id');
 			$table->integer('user_id');
@@ -20,15 +15,10 @@ class CreateLikeableTable extends Migration
 			$table->string('likeable_type');
 			$table->timestamps();
 		});
-    }
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+	public function down()
+	{
 		Schema::drop('likeable');
-    }
+	}
 }

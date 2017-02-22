@@ -5,13 +5,8 @@ use Chatty\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+	public function run()
+	{
 		User::create([
 			'email'		=> 'ransan32@yahoo.com',
 			'username'	=> 'ransan32',
@@ -30,7 +25,7 @@ class UsersTableSeeder extends Seeder
 			'location'	=> 'London, UK',
 		]);
 		
-        User::create([
+		User::create([
 			'email'		=> 'dale@codecourse.com',
 			'username'	=> 'dale',
 			'password'	=> bcrypt('password'),
@@ -45,5 +40,5 @@ class UsersTableSeeder extends Seeder
 			'firstname'	=> 'Billy',
 			'lastname'	=> 'Garrett',
 		]);
-    }
+	}
 }
