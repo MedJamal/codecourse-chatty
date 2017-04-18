@@ -58,7 +58,8 @@ class User extends Authenticatable
 	}
 
 	public function getAvatarUrl(){
-		return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40"; 
+		$hash = md5($this->email);
+		return "https://www.gravatar.com/avatar/{$hash}?d=mm&s=40";
 	}
 
 	public function statuses(){
