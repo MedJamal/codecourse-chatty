@@ -20,10 +20,6 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::get('/signout', 'AuthController@getSignout')->name('auth.signout');
 
-// Search
-
-Route::get('/search', 'SearchController@getResults')->name('search.results');
-
 // User Profile
 
 Route::get('/user/{username}', 'ProfileController@getProfile')->name('profile.index');
@@ -33,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile/edit', 'ProfileController@getEdit')->name('profile.edit');
 
 	Route::post('/profile/edit', 'ProfileController@postEdit');
+
+	// Search
+
+	Route::get('/search', 'SearchController@getResults')->name('search.results');
 
 	// Friends
 
