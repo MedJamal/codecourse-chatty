@@ -29,7 +29,7 @@
 				@include('partials.friendactions')
 			@endif {{-- check logged in --}}
 		
-			<h4>{{ $user->getFirstNameOrUsername() }}'s friends.</h4>
+			<h4>{{ $user->getFirstNameOrUsername() }}'s friends</h4>
 
 			@forelse($user->friends() as $user)
 				@include('partials.userblock')

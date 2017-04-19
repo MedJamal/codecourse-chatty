@@ -19,6 +19,16 @@ class FriendsTableSeeder extends Seeder
 				'friend_id' => 1,
 				'accepted' => 1,
 			],
+			[
+				'user_id' => 1,
+				'friend_id' => 4,
+				'accepted' => 0,
+			],
+			[
+				'user_id' => 5,
+				'friend_id' => 1,
+				'accepted' => 0,
+			],
 		]);
 	}
 }
