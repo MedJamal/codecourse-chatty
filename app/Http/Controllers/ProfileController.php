@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function getProfile($username){
+	public function getProfile($username){
 		$user = User::where('username', $username)->firstOrFail();
 
 		$statuses = $user->statuses()->notReply()->get();

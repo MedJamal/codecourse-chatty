@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
-    public function postStatus(){
+	public function postStatus(){
 		$this->validate(request(), [
 			'status' => 'required|max:1000',
 		]);

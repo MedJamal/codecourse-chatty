@@ -8,21 +8,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+	use Notifiable;
 
-    protected $fillable = [
-        'username',
+	protected $fillable = [
+		'username',
 		'email',
 		'password',
 		'firstname',
 		'lastname',
 		'location',
-    ];
+	];
 
-    protected $hidden = [
-        'password',
+	protected $hidden = [
+		'password',
 		'remember_token',
-    ];
+	];
 
 	public function getName($format = ':fn :ln'){
 		if($this->firstname && $this->lastname){
@@ -67,24 +67,24 @@ class User extends Authenticatable
 	}
 
 	public function friendsOfMine(){
-		 return $this->belongsToMany('Chatty\Models\User', 'friends', 'user_id', 'friend_id');
+		return $this->belongsToMany('Chatty\Models\User', 'friends', 'user_id', 'friend_id');
 	}
 
 	public function friendOf(){
-		 return $this->belongsToMany('Chatty\Models\User', 'friends', 'friend_id', 'user_id');
+		return $this->belongsToMany('Chatty\Models\User', 'friends', 'friend_id', 'user_id');
 	}
 
 	public function friends(){
-		 return $this->friendsOfMine()->wherePivot('accepted', true)->get()
-		 	->merge($this->friendOf()->wherePivot('accepted', true)->get());
+		return $this->friendsOfMine()->wherePivot('accepted', true)->get()
+			->merge($this->friendOf()->wherePivot('accepted', true)->get());
 	}
 
 	public function friendRequests(){
-		 return $this->friendsOfMine()->wherePivot('accepted', false)->get();
+		return $this->friendsOfMine()->wherePivot('accepted', false)->get();
 	}
 
 	public function friendRequestsPending(){
-		 return $this->friendOf()->wherePivot('accepted', false)->get();
+		return $this->friendOf()->wherePivot('accepted', false)->get();
 	}
 
 	public function hasFriendRequestPending(User $user){
@@ -113,13 +113,6 @@ class User extends Authenticatable
 	}
 
 	public function hasLikedStatus(Status $status){
-		/*
-		return (bool) $status->likes
-			->where('likeable_id', $status->id)
-			->where('likeable_type', get_class($status))
-			->where('user_id', $this->id)
-			->count();
-		*/
 		return (bool) $status->likes->where('user_id', $this->id)->count();
 	}
 }

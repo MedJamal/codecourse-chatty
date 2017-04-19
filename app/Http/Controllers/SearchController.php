@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function getResults(){
+	public function getResults(){
 		$keyword = request('keyword');
 		
 		if(!$keyword){
