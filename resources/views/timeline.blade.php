@@ -12,7 +12,7 @@
 						<span class="help-block">{{ $errors->first('status') }}</span>
 					@endif
 				</div>
-				<button type="submit" class="btn btn-default">Update status</button>
+				<button type="submit" class="btn btn-default">Post status</button>
 				{!! csrf_field() !!}
 			</form>
 			<hr>

@@ -46,10 +46,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// Statuses
 
-	Route::post('/status', 'StatusController@postStatus')->name('status.post');
+	Route::post('/statuses', 'StatusController@postStatus')->name('status.post');
 
-	Route::post('/status/{statusId}/reply', 'StatusController@postReply')->name('status.reply');
+	Route::post('/statuses/{statusId}/reply', 'StatusController@postReply')->name('status.reply');
 
-	Route::get('/status/{statusId}/like', 'StatusController@getLike')->name('status.like');
+	Route::get('/statuses/{statusId}/like', 'StatusController@getLike')->name('status.like');
 
 });
