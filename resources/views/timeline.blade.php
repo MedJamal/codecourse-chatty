@@ -32,7 +32,7 @@
 				</div>
 				<hr>
 			@empty
-				<p>There's nothing in your timeline, yet.</p>
+				<p>There's nothing in your timeline yet.</p>
 			@endforelse
 
 			{!! $statuses->render() !!}

@@ -24,10 +24,10 @@ class StatusController extends Controller
 
 	public function postReply($statusId){
 		$this->validate(request(), [
-			"reply-{$statusId}" => 'required|max:1000',
+			"reply-{$statusId}" => 'required|max:500',
 		], [
-			'required'	=> 'The reply body is required.',
-			'max'		=> 'The reply body may not be greater than :max characters.',
+			'required'	=> 'The reply field is required.',
+			'max'		=> 'The reply may not be greater than :max characters.',
 		]);
 
 		$status = Status::notReply()->findOrFail($statusId);

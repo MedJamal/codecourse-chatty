@@ -13,7 +13,7 @@ class HomeController extends Controller{
 				return $query->where('user_id', Auth::id())
 					->orWhereIn('user_id', Auth::user()->friends()->pluck('id'));
 			})
-			->orderBy('created_at', 'DESC')
+			->latest()
 			->paginate(10);
 			
 			return view('timeline')->with(compact('statuses'));
