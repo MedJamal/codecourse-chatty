@@ -24,9 +24,13 @@ class StatusesTableSeeder extends Seeder
 		}
 
 		foreach (range(1, 4) as $key) {
+			$timePosted = Carbon::now()->subHours(4 - $key);
+
 			Status::find(3)->replies()->create([
 				'body' => $faker->sentence(5, false),
 				'user_id' => $key,
+				'created_at' => $timePosted,
+				'updated_at' => $timePosted,
 			]);
 		}
 	} // run

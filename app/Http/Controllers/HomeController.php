@@ -14,7 +14,7 @@ class HomeController extends Controller{
 					->orWhereIn('user_id', Auth::user()->friends()->pluck('id'));
 			})
 			->latest()
-			->paginate(10);
+			->paginate(20);
 			
 			return view('timeline')->with(compact('statuses'));
 		}
