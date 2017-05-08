@@ -22,5 +22,12 @@ class StatusesTableSeeder extends Seeder
 				'updated_at' => $timePosted,
 			]);
 		}
+
+		foreach (range(1, 4) as $key) {
+			Status::find(3)->replies()->create([
+				'body' => $faker->sentence(5, false),
+				'user_id' => $key,
+			]);
+		}
 	} // run
 }

@@ -57,8 +57,7 @@ class StatusController extends Controller
 		$status = Status::findOrFail($statusId);
 
 		if(!Auth::user()->isFriendsWith($status->user)){
-			return redirect()
-				->route('home')
+			return back()
 				->with('alert', "Add {$status->user->getFirstNameOrUsername()} as a friend to like their statuses.");
 		}
 
