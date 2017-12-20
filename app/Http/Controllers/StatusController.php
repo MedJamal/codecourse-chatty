@@ -30,7 +30,7 @@ class StatusController extends Controller
 			'max'		=> 'The reply may not be greater than :max characters.',
 		]);
 
-		$status = Status::notReply()->findOrFail($statusId);
+		$status = Status::whereNull('parent_id')->findOrFail($statusId);
 
 		/*
 			if you are NOT friends with the owner of the status

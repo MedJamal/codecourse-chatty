@@ -11,7 +11,7 @@ class ProfileController extends Controller
 	public function getProfile($username){
 		$user = User::where('username', $username)->firstOrFail();
 
-		$statuses = $user->statuses()->notReply()->latest()->get();
+		$statuses = $user->statuses()->whereNull('parent_id')->latest()->get();
 
 		return view('profile.index')->with(compact('user', 'statuses'));
 	}
