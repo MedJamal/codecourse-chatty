@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', "Friends | ")
+@section('title', "Friends")
 
 @section('content')
 	<div class="row">

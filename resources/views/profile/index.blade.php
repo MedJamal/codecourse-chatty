@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', "{$user->getNameOrUsername()} | ")
+@section('title', "{$user->getNameOrUsername()}")
 
 @section('content')
 	<div class="row">

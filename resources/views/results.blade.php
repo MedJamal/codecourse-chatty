@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', "Search '{$keyword}' | ")
+@section('title', "Search '{$keyword}'")
 
 @section('content')
 	<h3>Your search for "{{ $keyword }}"</h3>

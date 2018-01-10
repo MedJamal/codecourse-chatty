@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', "Sign up | ")
+@section('title', "Sign up")
 
 @section('content')
 	<h3>Sign up</h3>

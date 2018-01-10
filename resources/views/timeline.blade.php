@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', "Timeline | ")
+@section('title', "Timeline")
 
 @section('content')
 	<div class="row">
